@@ -1,0 +1,25 @@
+{
+    "name": "smarty-starter",
+    "version": "1.0.0",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "@prettier/plugin-php": "^0.14.3",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.2.11",
+        "prettier": "^2.0.5"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.php": [
+            "prettier --write"
+        ],
+        "*.tpl": [
+            "js-beautify --type html --replace"
+        ]
+    }
+}
