@@ -1,12 +1,18 @@
 version: "3"
+
+volumes:
+    node_modules:
+    vendor:
+
 services:
     app:
         build:
             context: ./
             dockerfile: ./docker/app/Dockerfile
         volumes:
-            - ./public:/var/www/html/
             - ./:/var/www/
+            - node_modules:/var/www/node_modules
+            - vendor:/var/www/vendor
         ports:
             - 80:80
 
