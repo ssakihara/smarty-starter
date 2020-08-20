@@ -26,7 +26,7 @@
     {include "layouts/parts/footer.tpl"}
     {/block}
 
-    {include "devTool/debug.tpl"}
+    {include "devTool/vars.tpl"}
 </body>
 
 </html>
