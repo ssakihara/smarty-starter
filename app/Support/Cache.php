@@ -10,12 +10,17 @@ class Cache
 
     public static function boot()
     {
-        if (is_null($_ENV['APP_KEY'])) {
+        if (!defined('APP_KEY')) {
+            throw new \Exception('APP_KEY is nof defined');
+        }
+
+        if (APP_KEY === '') {
             throw new \Exception('APP_KEY is nof found');
         }
-        static::$key = $_ENV['APP_KEY'];
+
+        static::$key = APP_KEY;
         static::$repository = new \Memcached();
-        static::$repository->addServer($_ENV['MEMCACHE_SERVER'], $_ENV['MEMCACHE_SERVER_PORT']);
+        static::$repository->addServer(MEMCACHE_SERVER, MEMCACHE_SERVER_PORT);
     }
 
     /**
@@ -28,6 +33,12 @@ class Cache
      */
     public static function remember($key, \Closure $callback, $ttl = null)
     {
+        if (defined('APP_ENV')) {
+            if (APP_ENV !== 'production') {
+                return $callback();
+            }
+        }
+
         if (is_null(static::$repository)) {
             static::boot();
         }
