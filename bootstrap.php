@@ -8,7 +8,7 @@ define('PROJECT_ROOT', __DIR__);
 
 // Composer
 $autoload = null;
-$autoloadFiles = [__DIR__ . '/../vendor/autoload.php', __DIR__ . '/../../../autoload.php'];
+$autoloadFiles = [__DIR__ . '/vendor/autoload.php', __DIR__ . '/../../autoload.php'];
 foreach ($autoloadFiles as $autoloadFile) {
     if (file_exists($autoloadFile)) {
         $autoload = $autoloadFile;
@@ -22,7 +22,7 @@ if (!$autoload) {
 require $autoload;
 
 // 環境変数読み込み
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // 定義
