@@ -40,6 +40,12 @@
         ],
         "*.tpl": [
             "js-beautify --type html --replace"
+        ],
+        "*.js": [
+            "eslint --fix"
+        ],
+        "*.scss": [
+            "prettier --write"
         ]
     }
 }
