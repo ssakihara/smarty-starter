@@ -9,7 +9,7 @@
     {/block}
 
     <script src="/assets/js/app.js"></script>
-    {block "javascript"}
+    {block "js"}
     {/block}
 </head>
 

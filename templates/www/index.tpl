@@ -1,5 +1,5 @@
 {extends file="layouts/index.tpl"}
 
 {block "contents"}
-public
+<div>public</div>
 {/block}

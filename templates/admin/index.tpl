@@ -1,5 +1,5 @@
 {extends file="layouts/index.tpl"}
 
 {block "contents"}
-admin
+<div>admin</div>
 {/block}
