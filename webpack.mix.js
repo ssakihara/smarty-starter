@@ -8,7 +8,7 @@ mix.webpackConfig({
         rules: [
             {
                 enforce: 'pre',
-                test: /\.(js|scss)?$/,
+                test: /\.(js)?$/,
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
                 options: {
