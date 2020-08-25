@@ -21,18 +21,18 @@ if (!$autoload) {
 }
 require $autoload;
 
-// 環境変数読み込み
+// 環境変数
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // 定義
-$config = glob(__DIR__ . '/config/*.php');
+$config = globs(__DIR__ . '/config');
 foreach ($config as $path) {
     require_once $path;
 }
 
 // 初期設定
-$bootstrap = glob(__DIR__ . '/bootstrap/*.php');
+$bootstrap = globs(__DIR__ . '/bootstrap');
 foreach ($bootstrap as $path) {
     require_once $path;
 }
