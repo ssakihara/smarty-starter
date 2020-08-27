@@ -25,3 +25,18 @@ if (!function_exists('globs')) {
         return $list;
     }
 }
+
+/**
+ * @param string $key 取得するキー
+ * @param string|null $value 値がなかったときに返す値
+ * @return string|null  取得された値
+ */
+if (!function_exists('env')) {
+    function env(string $key, string $value = null)
+    {
+        if (is_null($_ENV[$key]) || $_ENV[$key] === '') {
+            return $value;
+        }
+        return $_ENV[$key];
+    }
+}
