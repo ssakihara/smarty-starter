@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 volumes:
     node_modules:
@@ -23,11 +23,12 @@ services:
         restart: always
         volumes:
             - ./docker/db/dbdata:/var/lib/postgresql/data
+            - ./database/migration:/docker-entrypoint-initdb.d
         ports:
             - 5432:5432
         environment:
             POSTGRES_HOST_AUTH_METHOD: trust
-            POSTGRES_DB: "${DB_DATABASE}"
+            POSTGRES_DB: '${DB_DATABASE}'
 
     pgadmin4:
         image: dockage/phppgadmin
