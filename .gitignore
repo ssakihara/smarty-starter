@@ -3,3 +3,4 @@ vendor/
 .env
 mix-manifest.json
 yarn-error.log
+.phpunit.result.cache
