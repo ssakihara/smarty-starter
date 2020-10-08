@@ -8,9 +8,9 @@ class ExampleTest extends TestCase
 {
     const FILE_PATH = __DIR__ . '/../data/globs/';
 
-    public function testGlobs()
+    public function testGlobs(): void
     {
         $files = globs(self::FILE_PATH);
-        $this->assertSame(3, count($files));
+        $this->assertCount(3, $files);
     }
 }

@@ -2,16 +2,17 @@
 
 namespace App\Support;
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
 use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 class Log
 {
     const ERROR = 'error';
+
     const DEBUG = 'debug';
 
-    protected $monolog = null;
+    protected $monolog;
 
     public function __construct($name)
     {
@@ -26,13 +27,13 @@ class Log
         $this->monolog->pushHandler($stream);
     }
 
-    public static function debug($value)
+    public static function debug($value): void
     {
         $log = new static(self::DEBUG);
         $log->monolog->debug($value);
     }
 
-    public static function error($value)
+    public static function error($value): void
     {
         $log = new static(self::ERROR);
         $log->monolog->error($value);

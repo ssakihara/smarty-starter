@@ -1,7 +1,7 @@
 <?php
 /**
- * 指定のディレクトリ配下のファイル配列を返す
- * @param string $dir ディレクトリのパス
+ * 指定のディレクトリ配下のファイル配列を返す.
+ * @param string $dir       ディレクトリのパス
  * @param string $extension 限定する拡張子
  * @return array ファイル名配列
  */
@@ -10,10 +10,12 @@ if (!function_exists('globs')) {
     {
         $files = glob(rtrim($dir, '/') . '/*');
         $list = [];
+
         foreach ($files as $file) {
             if (is_file($file)) {
                 $list[] = $file;
             }
+
             if (is_dir($file)) {
                 $list = array_merge($list, globs($file, $extension));
             }
@@ -26,7 +28,7 @@ if (!function_exists('globs')) {
     }
 }
 
-/**
+/*
  * @param string $key 取得するキー
  * @param string|null $value 値がなかったときに返す値
  * @return string|null  取得された値
@@ -34,7 +36,7 @@ if (!function_exists('globs')) {
 if (!function_exists('env')) {
     function env(string $key, string $value = null)
     {
-        if (is_null($_ENV[$key]) || $_ENV[$key] === '') {
+        if ($_ENV[$key] === null || $_ENV[$key] === '') {
             return $value;
         }
         return $_ENV[$key];
