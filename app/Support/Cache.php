@@ -59,4 +59,20 @@ class Cache
         static::$repository->set(static::$key . $key, serialize($value), $ttl * 60);
         return $value;
     }
+
+    /**
+     * キャッシュキーを作成する.
+     * @return mixed キャッシュキー
+     */
+    public static function createKey()
+    {
+        $db = debug_backtrace();
+        $result = $db[1]['function'];
+
+        if ($result === null) {
+            throw new \Exception('key cannot create');
+        }
+
+        return $result;
+    }
 }
