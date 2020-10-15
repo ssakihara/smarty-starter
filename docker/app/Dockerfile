@@ -2,6 +2,7 @@ FROM php:7.4-apache
 
 COPY ./docker/app/.bashrc /root/.bashrc
 COPY ./docker/app/sites-enabled /etc/apache2/sites-enabled/
+COPY ./docker/app/php.ini /usr/local/etc/php/php.ini
 
 ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
 
