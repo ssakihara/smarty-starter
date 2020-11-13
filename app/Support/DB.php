@@ -19,18 +19,20 @@ class DB
         self::$dbh = new PDO($dsn, $user, $password);
     }
 
-    public static function query($sql)
+    public static function query($sql, $param)
     {
         if (self::$dbh === null) {
             self::boot();
         }
 
-        return self::$dbh->query($sql);
-    }
+        $sth = self::$dbh->prepare($sql);
 
-    public static function fetch($sql)
-    {
-        return self::query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($param as $key => $value) {
+            $sth->bindParam(":${key}", $value, PDO::PARAM_STR);
+        }
+        $sth->execute();
+
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function transaction(\Closure $func): void
@@ -53,7 +55,8 @@ class DB
     public static function fetchColumns($table)
     {
         $result = [];
-        $tmp = self::fetch("SELECT column_name FROM information_schema.columns WHERE table_name = '${table}' ORDER BY ordinal_position");
+        $param = ['table_name' => $table];
+        $tmp = self::query('SELECT column_name FROM information_schema.columns WHERE table_name = :table_name ORDER BY ordinal_position', $param);
         $result = array_column($tmp, 'column_name');
 
         return $result;
