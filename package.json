@@ -1,51 +1,52 @@
 {
-    "name": "smarty-starter",
-    "version": "1.0.0",
-    "license": "MIT",
-    "private": true,
-    "scripts": {
-        "dev": "yarn run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "yarn run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "@prettier/plugin-php": "^0.14.3",
-        "bootstrap": "^4.5.2",
-        "cross-env": "^7.0.2",
-        "eslint": "^7.7.0",
-        "eslint-config-prettier": "^6.11.0",
-        "eslint-loader": "^4.0.2",
-        "eslint-plugin-prettier": "^3.1.4",
-        "husky": "^4.2.5",
-        "jquery": "^3.5.1",
-        "js-beautify": "^1.12.0",
-        "laravel-mix": "^5.0.5",
-        "lint-staged": "^10.2.11",
-        "popper.js": "^1.16.1",
-        "prettier": "^2.0.5",
-        "resolve-url-loader": "3.1.0",
-        "sass": "^1.26.10",
-        "sass-loader": "^9.0.3",
-        "vue-template-compiler": "^2.6.12"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.php": [
-            "./vendor/bin/php-cs-fixer --config=.php_cs.dist fix"
-        ],
-        "*.tpl": [
-            "js-beautify --type html --replace"
-        ],
-        "*.js": [
-            "eslint --fix"
-        ],
-        "*.scss": [
-            "prettier --write"
-        ]
+  "name": "smarty-starter",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "yarn run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "yarn run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prettier": "prettier --write '**/*.{js,ts,json,md}'"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.14.3",
+    "bootstrap": "^4.5.2",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "jquery": "^3.5.1",
+    "js-beautify": "^1.12.0",
+    "laravel-mix": "^5.0.5",
+    "lint-staged": "^10.2.11",
+    "popper.js": "^1.16.1",
+    "prettier": "^2.0.5",
+    "resolve-url-loader": "3.1.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.php": [
+      "composer lint"
+    ],
+    "*.tpl": [
+      "js-beautify --type html --replace"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.{yml,json,scss}": [
+      "prettier --write"
+    ]
+  }
 }
